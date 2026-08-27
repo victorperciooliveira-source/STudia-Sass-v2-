@@ -1,0 +1,295 @@
+/* ============================================================
+   STUDIA DESIGN SYSTEM - PALETA OKLCH & TOKENS VISUAIS DE ELITE
+   ============================================================ */
+
+:root {
+  /* Paleta Primária - Azul Institucional Profundo & Ciano Luminoso */
+  --studia-blue-950: oklch(0.18 0.08 258);
+  --studia-blue-900: oklch(0.24 0.12 258);
+  --studia-blue-800: oklch(0.35 0.16 256);
+  --studia-blue-700: oklch(0.44 0.20 254);
+  --studia-blue-600: oklch(0.53 0.24 252);
+  --studia-blue-500: oklch(0.62 0.22 250);
+  --studia-blue-400: oklch(0.72 0.18 245);
+  --studia-blue-300: oklch(0.82 0.12 240);
+  --studia-blue-200: oklch(0.90 0.07 235);
+  --studia-blue-100: oklch(0.95 0.03 230);
+  --studia-blue-50: oklch(0.98 0.01 230);
+
+  /* Acentos Luminosos */
+  --studia-cyan: oklch(0.78 0.18 215);
+  --studia-indigo: oklch(0.48 0.25 278);
+  --studia-emerald: oklch(0.65 0.20 155);
+  --studia-amber: oklch(0.75 0.18 80);
+  --studia-rose: oklch(0.62 0.24 25);
+
+  /* Sombras Volumétricas & Glows */
+  --shadow-subtle: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  --shadow-card-3d: 0 20px 40px -15px rgba(14, 43, 92, 0.12), 0 0 0 1px rgba(226, 232, 240, 0.8);
+  --shadow-glow-blue: 0 0 50px -10px oklch(0.53 0.24 252 / 0.35);
+  --shadow-glow-cyan: 0 0 45px -8px oklch(0.78 0.18 215 / 0.30);
+}
+
+/* Tipografia Sora & Inter */
+.font-display {
+  font-family: 'Sora', system-ui, -apple-system, sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Backgrounds de Iluminação Aurora e Malha de Luz */
+.bg-aurora-mesh {
+  background-image: 
+    radial-gradient(at 10% 10%, oklch(0.92 0.08 240 / 0.8) 0px, transparent 50%),
+    radial-gradient(at 90% 15%, oklch(0.90 0.10 215 / 0.7) 0px, transparent 55%),
+    radial-gradient(at 50% 80%, oklch(0.94 0.05 260 / 0.6) 0px, transparent 60%),
+    radial-gradient(at 80% 85%, oklch(0.91 0.08 190 / 0.5) 0px, transparent 50%);
+}
+
+.bg-dark-aurora {
+  background-image: 
+    radial-gradient(at 20% 20%, oklch(0.35 0.20 260 / 0.35) 0px, transparent 60%),
+    radial-gradient(at 80% 30%, oklch(0.40 0.22 220 / 0.30) 0px, transparent 55%),
+    radial-gradient(at 50% 90%, oklch(0.28 0.18 280 / 0.25) 0px, transparent 65%);
+}
+
+/* Efeito 3D Isométrico de Produto */
+.perspective-container {
+  perspective: 1400px;
+}
+
+.card-3d-tilt {
+  transform: rotateX(8deg) rotateY(-4deg) rotateZ(1deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+.card-3d-tilt:hover {
+  transform: rotateX(2deg) rotateY(0deg) rotateZ(0deg) translateY(-8px);
+}
+
+/* Sheen (Brilho metálico deslizante) */
+@keyframes sheen-slide {
+  0% {
+    transform: translateX(-100%) skewX(-25deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-25deg);
+  }
+}
+
+.animate-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: sheen-slide 4.5s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* Float & Aurora Glow Animations - Suaves, 60fps GPU Hardware Accelerated */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.animate-float {
+  animation: float-gentle 6s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translate3d(0, 0, 0) scale3d(1.08, 1.08, 1);
+  }
+}
+
+.animate-aurora {
+  animation: pulse-glow 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Jogo de Luzes Suave e Fluido (Ambient Mesh Lights) */
+@keyframes ambient-drift-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.5;
+  }
+  33% {
+    transform: translate3d(30px, -20px, 0) scale(1.1);
+    opacity: 0.75;
+  }
+  66% {
+    transform: translate3d(-20px, 15px, 0) scale(0.95);
+    opacity: 0.6;
+  }
+}
+
+@keyframes ambient-drift-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(-35px, 25px, 0) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+.animate-ambient-1 {
+  animation: ambient-drift-1 14s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+.animate-ambient-2 {
+  animation: ambient-drift-2 18s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Pulso Suave e Elegante para Badges e Status */
+@keyframes smooth-ping {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.animate-smooth-ping {
+  animation: smooth-ping 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Glassmorphism Sofisticado */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+}
+
+.glass-panel-dark {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Gradientes de Texto de Alta Resolução */
+.text-gradient-studia {
+  background: linear-gradient(135deg, oklch(0.24 0.12 258) 0%, oklch(0.53 0.24 252) 50%, oklch(0.72 0.18 215) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #818cf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Marquee Fluido e Lento para Leitura Agradável - GPU 60fps */
+@keyframes marquee-horizontal {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: marquee-horizontal 55s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.animate-marquee-slow:hover {
+  animation-play-state: paused;
+}
+
+/* ============================================================
+   ROUTINE & SCROLL SYSTEM - ULTRA-CLEAN & BUG-FREE
+   Remove todas as barras grossas, calhas brancas e duplicidades
+   ============================================================ */
+
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Oculta barras de rolagem nativas feias/cinzas em todos os navegadores */
+* {
+  -ms-overflow-style: none; /* IE e Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+}
+
+/* Esconder barra de rolagem quando classe no-scrollbar for usada */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+
+

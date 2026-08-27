@@ -1,0 +1,8 @@
+{
+  "name": "Studia — SaaS de Grade Escolar & Substituição",
+  "description": "Plataforma Inteligente de Gestão de Grade Escolar, Substituições Automáticas e Multi-Tenancy para Instituições de Ensino.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
