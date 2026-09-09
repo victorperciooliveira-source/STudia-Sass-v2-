@@ -7,7 +7,8 @@ import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 
 const app = express();
-const PORT = 3000;
+const requestedPort = Number(process.env.PORT ?? 3000);
+const PORT = Number.isFinite(requestedPort) && requestedPort > 0 ? requestedPort : 3000;
 const isProd = process.env.NODE_ENV === 'production';
 
 // 1. Cabeçalhos de Segurança (Configurados para permitir iframe do AI Studio e Vite HMR/Live Preview)
