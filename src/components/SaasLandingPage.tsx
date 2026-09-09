@@ -115,28 +115,6 @@ export default function SaasLandingPage({ onGoToPortal, onOpenAuth, onOpenSupaba
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white overflow-x-hidden">
-      {/* Top Status Bar */}
-      <div className="bg-slate-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 relative z-50">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 relative">
-              <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${isConfigured ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
-              <span className={`relative inline-flex rounded-full h-2 w-2 ${isConfigured ? 'bg-emerald-500' : 'bg-amber-500'}`}></span>
-            </span>
-            <span className="font-mono text-[11px] text-slate-300">
-              {isConfigured ? 'Sincronização em Nuvem Conectada' : 'Servidor Escolar Pronto'}
-            </span>
-          </div>
-          <button 
-            onClick={onOpenSupabaseConfig}
-            className="flex items-center gap-1.5 text-[11px] text-blue-400 hover:text-blue-300 underline font-semibold transition-colors cursor-pointer"
-          >
-            <Database size={12} />
-            {isConfigured ? 'Conexão em Nuvem' : 'Configurar Servidor Escolar'}
-          </button>
-        </div>
-      </div>
-
       {/* Main SaaS Navbar */}
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-100/80 shadow-xs">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
